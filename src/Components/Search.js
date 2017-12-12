@@ -66,7 +66,7 @@ class Search extends Component {
                 </div>
                 <div className="search-books-results">
 
-                    { this.state.nothingFound ? <p>No results.</p> :
+                    { this.state.nothingFound ? <p className="no-results">No results</p> :
 
                         <ol className="books-grid">
 

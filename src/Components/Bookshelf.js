@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 class Bookshelf extends Component{
 
-
     moveToShelf(book, destination) {
         this.props.onUpdateBook(book, destination)
     }

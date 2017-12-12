@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import * as BooksAPI from './BooksAPI'
+import * as BooksAPI from '../BooksAPI'
 import Book from './Book'
 import { debounce } from 'throttle-debounce'
 import { Link } from 'react-router-dom'
-import PropTypes from 'prop-types'
 
 class Search extends Component {
 
@@ -20,7 +19,7 @@ class Search extends Component {
 
     handleResults = debounce( 500,  ( query ) =>{
 
-        // Go fetch results, setState fo books, and nothingFound
+        // Go fetch results, setState for books, and nothingFound
 
         if ( query ) {
 
@@ -88,7 +87,3 @@ class Search extends Component {
 }
 
 export default Search
-
-Search.propTypes = {
-    books: PropTypes.array.isRequired,
-}

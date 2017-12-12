@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 class Book extends Component {
 
-
     specifyShelf( selection ){
         if( this.props.moveToShelf ){
             this.props.moveToShelf( selection )

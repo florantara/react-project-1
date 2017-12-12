@@ -42,21 +42,19 @@ class BooksApp extends Component {
         return (
             <div className="app">
                 <div className="list-books">
-                    <div className="list-books-title">
-                        <h1>MyReads</h1>
-                    </div>
-                    <div className="list-books-content">
-                {this.state.showSearchPage ? (
-                    <Search />
-                ) : (
-                    <List booksList={this.state.books} onUpdateBookItem={this.updateBookData.bind(this)}/>
-                )}
-                    </div>
+
+                    {this.state.showSearchPage ? (
+                        <Search onUpdateBookItem={this.updateBookData.bind(this)}/>
+                    ) : (
+                        <List booksList={this.state.books} onUpdateBookItem={this.updateBookData.bind(this)}/>
+                    )}
                 </div>
                 <div className="open-search">
                     <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
                 </div>
             </div>
+
+
         )
     }
 }

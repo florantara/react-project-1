@@ -36,12 +36,12 @@ const BookshelfChanger = ({ inShelf, handleBookshelfChanger }) => {
         <div className="book-shelf-changer">
             <select onChange={(event) => { triggerBookshelfChanger(event.target.value) }}>
 
+                {/* TO DO: If currentShelf has something, show, otherwise, dont. */}
                 <option defaultValue>Now in: {currentShelf}</option>
+
                 <option value="none" disabled> Move to:</option>
 
                 {availableShelves}
-
-
 
                 <option value="none">None</option>
             </select>

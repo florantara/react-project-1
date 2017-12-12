@@ -3,29 +3,47 @@ import Bookshelf from './Bookshelf'
 
 class List extends Component{
 
-
     updateBook( book, shelf ){
         this.props.onUpdateBookItem( book, shelf)
     }
 
     render(){
 
-        const currentlyReadingBooks = this.props.booksList.filter( books => books.shelf === "currentlyReading" )
-        const wantToReadBooks = this.props.booksList.filter( books => books.shelf === "wantToRead" )
-        const readBooks = this.props.booksList.filter( books => books.shelf === "read" )
+        const shelves = [
+            {
+                "title": "Currently Reading",
+                "type": "currentlyReading",
+            },
+            {
+                "title": "Want To Read",
+                "type": "wantToRead",
+            },
+            {
+                "title": "Read",
+                "type": "read",
+            }
+        ];
 
         return(
-                <div>
+            <div>
+                <div className="list-books-title">
+                    <h1>MyReads</h1>
+                </div>
+                <div className="list-books-content">
 
-                    <Bookshelf books={currentlyReadingBooks} shelfTitle="Currently Reading" onUpdateBook={this.updateBook.bind(this)}/>
-
-                    <Bookshelf books={wantToReadBooks} shelfTitle="Want To Read" onUpdateBook={this.updateBook.bind(this)}/>
-
-                    <Bookshelf books={readBooks} shelfTitle="Read" onUpdateBook={this.updateBook.bind(this)}/>
+                    {
+                        shelves.map ( shelf => (
+                            <Bookshelf
+                                books={this.props.booksList.filter( books => books.shelf === shelf.type )}
+                                shelfTitle={shelf.title}
+                                onUpdateBook={this.updateBook.bind(this)}/>
+                        ))
+                    }
 
                 </div>
-            )
-        }
+            </div>
+        )
     }
+}
 
-    export default List
+export default List

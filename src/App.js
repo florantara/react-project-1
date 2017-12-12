@@ -3,7 +3,7 @@ import './App.css'
 import List from './List'
 import Search from './Search'
 import * as BooksAPI from "./BooksAPI"
-import { Link, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 class BooksApp extends Component {
 
@@ -45,9 +45,6 @@ class BooksApp extends Component {
                         <List booksList={this.state.books} onUpdateBookItem={this.updateBookData.bind(this)}/>
                     ) } />
 
-                </div>
-                <div className="open-search">
-                    <Link to="/search">More books</Link>
                 </div>
             </div>
 

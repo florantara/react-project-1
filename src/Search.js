@@ -3,8 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import Book from './Book'
 import { debounce } from 'throttle-debounce'
 import { Link } from 'react-router-dom'
-
-// On Change inpupt: consult API with value entered
+import PropTypes from 'prop-types'
 
 class Search extends Component {
 
@@ -89,3 +88,7 @@ class Search extends Component {
 }
 
 export default Search
+
+Search.propTypes = {
+    books: PropTypes.array.isRequired,
+}

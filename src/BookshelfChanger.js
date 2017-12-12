@@ -26,7 +26,7 @@ const BookshelfChanger = ({ inShelf, handleBookshelfChanger }) => {
     const currentShelf =
         allShelves
         .filter( shelf =>  shelf.name === inShelf )
-        .map( currentlyIn => <option defaultValue>Now in: {currentlyIn.label}</option> )
+        .map( currentlyIn => <option key={currentlyIn.label} defaultValue>Now in: {currentlyIn.label}</option> )
 
     const triggerBookshelfChanger = ( to ) => {
          handleBookshelfChanger( to )

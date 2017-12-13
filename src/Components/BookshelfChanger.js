@@ -1,6 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const BookshelfChanger = ({ inShelf, handleBookshelfChanger }) => {
+const BookshelfChanger = ({ inShelf, book, handleBookshelfChanger }) => {
 
     const allShelves = [
         {
@@ -28,13 +29,13 @@ const BookshelfChanger = ({ inShelf, handleBookshelfChanger }) => {
         .filter( shelf =>  shelf.name === inShelf )
         .map( currentlyIn => <option key={currentlyIn.label} defaultValue>Now in: {currentlyIn.label}</option> )
 
-    const triggerBookshelfChanger = ( to ) => {
-         handleBookshelfChanger( to )
+    const triggerBookshelfChanger = ( book, shelf ) => {
+         handleBookshelfChanger( book, shelf )
      }
 
     return(
         <div className="book-shelf-changer">
-            <select onChange={(event) => { triggerBookshelfChanger(event.target.value) }}>
+            <select onChange={(event) => { triggerBookshelfChanger(book, event.target.value) }}>
 
                 {currentShelf}
 
@@ -49,3 +50,10 @@ const BookshelfChanger = ({ inShelf, handleBookshelfChanger }) => {
 }
 
 export default BookshelfChanger
+
+BookshelfChanger.propTypes = {
+    inShelf: PropTypes.string,
+    book: PropTypes.object.isRequired,
+    handleBookshelfChanger: PropTypes.func.isRequired
+}
+

@@ -13,6 +13,7 @@ class Search extends Component {
             books: [],
             nothingFound: false
         }
+        this.moveToShelf = this.moveToShelf.bind(this)
     }
 
     // Debounce fetching results to prevent fetching on every keystroke
@@ -74,7 +75,7 @@ class Search extends Component {
                                 <Book
                                     key={book.id}
                                     book={book}
-                                    moveToShelf={this.moveToShelf.bind(this, book)}
+                                    moveToShelf={this.moveToShelf}
                                 />
                              ) }
 

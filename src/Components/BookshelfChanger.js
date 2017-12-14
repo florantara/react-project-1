@@ -24,10 +24,7 @@ const BookshelfChanger = ({ inShelf, book, handleBookshelfChanger }) => {
         .map( moveTo => <option key={moveTo.name} value={moveTo.name}>{moveTo.label}</option>
     )
 
-    const currentShelf =
-        allShelves
-        .filter( shelf =>  shelf.name === inShelf )
-        .map( currentlyIn => <option key={currentlyIn.label} defaultValue>Now in: {currentlyIn.label}</option> )
+    const currentShelf = allShelves.find( shelf => shelf.name === inShelf )
 
     const triggerBookshelfChanger = ( book, shelf ) => {
          handleBookshelfChanger( book, shelf )
@@ -37,13 +34,18 @@ const BookshelfChanger = ({ inShelf, book, handleBookshelfChanger }) => {
         <div className="book-shelf-changer">
             <select onChange={(event) => { triggerBookshelfChanger(book, event.target.value) }}>
 
-                {currentShelf}
+                <option disabled> Shelf:</option>
 
-                <option value="none" disabled> Move to:</option>
+                { currentShelf ?
+                    <option value={currentShelf.name} defaultValue>{currentShelf.label}  </option>
+                    :
+                    <option value='none' defaultValue> None </option>
+                 }
+
+                 { currentShelf &&  <option value='none'> None </option>}
 
                 {availableShelves}
 
-                <option value="none">None</option>
             </select>
         </div>
     )

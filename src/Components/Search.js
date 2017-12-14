@@ -11,8 +11,7 @@ class Search extends Component {
         this.state = {
             searchQuery: "",
             books: [],
-            nothingFound: false,
-            myReads: this.props.myReads
+            nothingFound: false
         }
         this.moveToShelf = this.moveToShelf.bind(this)
     }
@@ -76,7 +75,7 @@ class Search extends Component {
 
                             { this.state.books.map( book => {
 
-                                let inMyReads = this.state.myReads.find( myBook => myBook.id === book.id )
+                                let inMyReads = this.props.myReads.find( myBook => myBook.id === book.id )
 
                                 if ( inMyReads )  {
 

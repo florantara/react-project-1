@@ -11,7 +11,8 @@ class Search extends Component {
         this.state = {
             searchQuery: "",
             books: [],
-            nothingFound: false
+            nothingFound: false,
+            myReads: this.props.myReads
         }
         this.moveToShelf = this.moveToShelf.bind(this)
     }
@@ -71,12 +72,33 @@ class Search extends Component {
 
                         <ol className="books-grid">
 
-                            { this.state.books.map( book =>
-                                <Book
-                                    key={book.id}
-                                    book={book}
-                                    moveToShelf={this.moveToShelf}
-                                />
+
+
+                            { this.state.books.map( book => {
+
+                                let inMyReads = this.state.myReads.find( myBook => myBook.id === book.id )
+
+                                if ( inMyReads )  {
+
+                                    return <Book
+                                        key={book.id}
+                                        book={book}
+                                        moveToShelf={this.moveToShelf}
+                                        inShelf={inMyReads.shelf}
+                                    />
+
+                                    } else {
+
+                                    return <Book
+                                        key={book.id}
+                                        book={book}
+                                        moveToShelf={this.moveToShelf}
+                                    />
+
+                                    }
+                            }
+
+
                              ) }
 
                         </ol>

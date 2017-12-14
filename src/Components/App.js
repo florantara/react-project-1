@@ -38,7 +38,7 @@ class BooksApp extends Component {
                 <div className="list-books">
 
                     <Route exact path="/search" render={ () => (
-                        <Search onUpdateBookItem={this.updateBookData.bind(this)}/>
+                        <Search myReads={this.state.books} onUpdateBookItem={this.updateBookData.bind(this)}/>
                     ) } />
 
                     <Route exact path="/" render={ () => (

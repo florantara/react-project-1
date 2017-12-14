@@ -11,15 +11,19 @@ const Book = ({ moveToShelf, book, inShelf }) => {
         }
     }
 
+
+    const cover = book.imageLinks ? book.imageLinks.smallThumbnail : 'http://via.placeholder.com/128x193?text=No%20Cover'
+
     return(
+
         <li>
             <div className="book">
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${cover})` }}></div>
                     <BookshelfChanger inShelf={inShelf ? inShelf : book.shelf} book={book} handleBookshelfChanger={specifyShelf} />
                 </div>
                 <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors}</div>
+                <div className="book-authors">{ book.authors ? book.authors.join(', ') : 'Unknown author'}</div>
             </div>
         </li>
     )

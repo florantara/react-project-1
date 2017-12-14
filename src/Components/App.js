@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import '../App.css'
 import List from './List'
 import Search from './Search'
+import PageNotFound from './PageNotFound'
 import * as BooksAPI from "../BooksAPI"
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 class BooksApp extends Component {
 
@@ -36,18 +37,22 @@ class BooksApp extends Component {
         return (
             <div className="app">
                 <div className="list-books">
+                    <Switch>
 
-                    <Route exact path="/search" render={ () => (
-                        <Search myReads={this.state.books} onUpdateBookItem={this.updateBookData.bind(this)}/>
-                    ) } />
+                        <Route exact path="/search" render={ () => (
+                            <Search myReads={this.state.books} onUpdateBookItem={this.updateBookData.bind(this)}/>
+                        ) } />
 
-                    <Route exact path="/" render={ () => (
-                        <List booksList={this.state.books} onUpdateBookItem={this.updateBookData.bind(this)}/>
-                    ) } />
+                        <Route exact path="/" render={ () => (
+                            <List booksList={this.state.books} onUpdateBookItem={this.updateBookData.bind(this)}/>
+                        ) } />
+
+                        <Route component={PageNotFound} />
+
+                    </Switch>
 
                 </div>
             </div>
-
 
         )
     }
